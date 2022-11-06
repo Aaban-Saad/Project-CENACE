@@ -33,7 +33,6 @@ void menu();
 
 int main()
 {
-    exit_CENACE = 0;
     menu();
     if(exit_CENACE) return 0;
 
@@ -132,15 +131,16 @@ int main()
 
         }while (win == 0);
 
-        
+
+        //Printing all paths
+        printf("\nFile paths: ");
         for(int i = 0; i < O_move_count; i++)
         {
             printf("\n%s", O_paths[i]);
         }
         
-
         //Asking user if he/she wants to play again
-        if(auto_train != 'y')
+        if(auto_train != 'y' && auto_train != 'Y')
         {
             char ask;
             printf("\n\n\tPlay again? (y/n) --> ");
@@ -157,6 +157,7 @@ int main()
                 {
                     system("cls");
                     menu();
+                    if(exit_CENACE) return 0;
                 }
                 else if(ask == 8)
                 {
@@ -174,21 +175,22 @@ int main()
             }
         }
 
-        if(auto_train == 'y')
+        if(auto_train == 'y' || auto_train == 'Y')
         {
-            printf("\n\tmatch = %d", auto_train_count);
             auto_train_count ++;
+            printf("\n\tmatch = %d", auto_train_count);
             O_move_count = 0;
             if(auto_train_count == total_training_match)
             {
-                printf("\n\tTraining complete.");
-                printf("\n\t Press any key to continue. ");
+                printf("\n\n\tTraining complete.");
+                printf("\n\tPress any key to continue. ");
                 getch();
                 auto_train = 'n';
                 system("cls");
                 menu();
+                if(exit_CENACE) return 0;
             }
-        } 
+        }
     }
 }
 
@@ -338,15 +340,15 @@ void inputmove()
     else
     {
         FILE* file;
-        int i, j = 0, k;
+        int  i, j = 0, k;
         char current_board[10], cmd[50] = "md Learning_data\\";
 
         char path[50] = "Learning_data\\";
         char temp[2] = "i";
         char point[4]; //This is a string to store the point read from file
-        int point_list[space_in_board()];
-        int point_pose[space_in_board()];
-        int sum_of_available_move_point = 0;
+        int  point_list[space_in_board()];
+        int  point_pose[space_in_board()];
+        int  sum_of_available_move_point = 0;
         
         
 
@@ -483,9 +485,9 @@ void printboard()
         printf("\n\tPlayer-X, your turn\n");
     }
 
-    printf("\n\t\t1|2|3");
-    printf("\n\t\t4|5|6");
-    printf("\n\t\t7|8|9\n");
+    printf("\n\t\t 1|2|3");
+    printf("\n\t\t 4|5|6");
+    printf("\n\t\t 7|8|9\n");
 
     printf("\n\t       |       |       ");
     printf("\n\t   %c   |   %c   |   %c   ", gameboard[0], gameboard[1], gameboard[2]);
@@ -495,7 +497,7 @@ void printboard()
     printf("\n\t_______|_______|_______");
     printf("\n\t       |       |       ");
     printf("\n\t   %c   |   %c   |   %c   ", gameboard[6], gameboard[7], gameboard[8]);
-    printf("\n\t       |       |       ");
+    printf("\n\t       |       |       \n");
 }
 
 int checkwin()
@@ -567,6 +569,8 @@ void updateLearning_data()
 void menu()
 {
     menu:
+    exit_CENACE = 0;
+
     printf("\n\n\t1. Auto Train");
     printf("\n\t2. Play");
     printf("\n\t3. Rules");
@@ -589,9 +593,9 @@ void menu()
         auto_train = getch();
         printf("%c", auto_train);
 
-        if(auto_train == 'y')
+        if(auto_train == 'y' || auto_train == 'Y')
         {
-            printf("\n\tMatches to be played -> ");
+            printf("\n\tMatches to be played --> ");
             scanf("%d", &total_training_match);
             fflush(stdin);
         }
