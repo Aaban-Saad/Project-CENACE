@@ -16,11 +16,11 @@ int  player;
 char player_X, player_O;
 int  win;
 char move, mark;
-int  O_move_count = 0;
+int  O_move_count;
 char O_paths[5][50] = {'\0'};
 char gameboard[10]; //this is a string
 char auto_train;
-int  auto_train_count = 0, total_training_match;
+int  auto_train_count, total_training_match;
 int  exit_CENACE;
 
 void choose_player();
@@ -35,13 +35,16 @@ void CENACE_intro();
 
 int main()
 {
+    system("cls");
     CENACE_intro();
     menu();
     if(exit_CENACE) return 0;
 
     system("mkdir Learning_data");
-    system("cls");
 
+    start:
+    auto_train_count = 0;
+    O_move_count = 0;
     while(1)
     {
         player = 1;
@@ -159,8 +162,10 @@ int main()
                 else if(ask == 'n' || ask == 'N')
                 {
                     system("cls");
+                    O_move_count = 0;
                     menu();
                     if(exit_CENACE) return 0;
+                    else goto start;
                 }
                 else if(ask == 8)
                 {
@@ -192,6 +197,7 @@ int main()
                 system("cls");
                 menu();
                 if(exit_CENACE) return 0;
+                else goto start;
             }
         }
     }
