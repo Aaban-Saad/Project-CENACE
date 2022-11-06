@@ -313,7 +313,7 @@ void printboard()
     }
     else
     {
-        printf("\n\tPlayer-O, your turn\n");
+        printf("\n\tPlayer-), your turn\n");
     }
 
     printf("\n\t\t1|2|3");
