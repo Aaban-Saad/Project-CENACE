@@ -17,9 +17,10 @@ int  win;
 char move, mark;
 int  O_move_count = 0;
 char O_paths[5][50] = {'\0'};
-char gameboard[10]; //it is a string
+char gameboard[10]; //this is a string
 char auto_train;
-int  auto_train_count = 0;
+int  auto_train_count = 0, total_training_match;
+int  exit_CENACE;
 
 void choose_player();
 void inputmove();
@@ -28,23 +29,18 @@ void printboard();
 int  checkwin();
 int  space_in_board();
 void updateLearning_data();
+void menu();
 
 int main()
 {
-    int total_match;
-    printf("\n\n\tAuto Train? (y/n) --> ");
-    auto_train = getch();
-    if(auto_train == 'y')
-    {
-        printf("\n\tMatches to be played -> ");
-        scanf("%d", &total_match);
-    }
+    exit_CENACE = 0;
+    menu();
+    if(exit_CENACE) return 0;
 
-    
     system("mkdir Learning_data");
     system("cls");
 
-    while(auto_train_count <= total_match)
+    while(1)
     {
         player = 1;
         newboard();
@@ -159,7 +155,8 @@ int main()
                 }
                 else if(ask == 'n' || ask == 'N')
                 {
-                    return 0;
+                    system("cls");
+                    menu();
                 }
                 else if(ask == 8)
                 {
@@ -176,11 +173,21 @@ int main()
                 }
             }
         }
+
         if(auto_train == 'y')
         {
             printf("\n\tmatch = %d", auto_train_count);
             auto_train_count ++;
             O_move_count = 0;
+            if(auto_train_count == total_training_match)
+            {
+                printf("\n\tTraining complete.");
+                printf("\n\t Press any key to continue. ");
+                getch();
+                auto_train = 'n';
+                system("cls");
+                menu();
+            }
         } 
     }
 }
@@ -556,3 +563,78 @@ void updateLearning_data()
     }
     
 }
+
+void menu()
+{
+    menu:
+    printf("\n\n\t1. Auto Train");
+    printf("\n\t2. Play");
+    printf("\n\t3. Rules");
+    printf("\n\t4. About");
+    printf("\n\t5. Exit");
+    printf("\n\n\t--> ");
+
+    char choice = getch();
+    printf("%c", choice);
+
+    switch (choice)
+    {
+        case '1':
+        system("cls");
+
+        printf("\n\tTraining may take some time.");
+        printf("\n\tDo not exit the program during training.");
+        printf("\n\tContinue? (y/n) --> ");
+
+        auto_train = getch();
+        printf("%c", auto_train);
+
+        if(auto_train == 'y')
+        {
+            printf("\n\tMatches to be played -> ");
+            scanf("%d", &total_training_match);
+            fflush(stdin);
+        }
+        else
+        {
+            system("cls");
+            goto menu;
+        }
+        return;
+        break;
+        
+        case '2':
+        return;
+        break;
+
+        case '3':
+        system("cls");
+        printf("\nUnder development");
+        getch();
+        system("cls");
+        goto menu;
+        break;
+
+        case '4':
+        system("cls");
+        printf("\nUnder development");
+        getch();
+        system("cls");
+        goto menu;
+        break;
+
+        case '5':
+        exit_CENACE = 1;
+        return;
+        break;
+
+        default:
+        getch();
+        system("cls");
+        goto menu;
+        break;
+
+    }
+}
+
+
