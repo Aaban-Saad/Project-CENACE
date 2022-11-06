@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <windows.h>
 
 #define INITIAL_POINT "2"
 #define MAX_POINT 300
@@ -30,9 +31,11 @@ int  checkwin();
 int  space_in_board();
 void updateLearning_data();
 void menu();
+void CENACE_intro();
 
 int main()
 {
+    CENACE_intro();
     menu();
     if(exit_CENACE) return 0;
 
@@ -571,7 +574,7 @@ void menu()
     menu:
     exit_CENACE = 0;
 
-    printf("\n\n\t1. Auto Train");
+    printf("\n\n\t1. Auto Train CENACE");
     printf("\n\t2. Play");
     printf("\n\t3. Rules");
     printf("\n\t4. About");
@@ -641,4 +644,96 @@ void menu()
     }
 }
 
+void CENACE_intro()
+{
+    system("cls");
+    printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c", 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    Sleep(1500);
+    system("cls");
 
+    printf("\n\t%c%c%c", 219, 219, 219);
+    printf("\n\t%c%c%c  %c%c", 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c   %c", 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c%c%c%c%c%c%c%c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c",219);
+    printf("\n\t%c%c%c      %c%c%c%c%c%c%c%c%c%c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c",219);
+    printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+
+    Sleep(1000);
+    system("cls");
+
+    printf("\n\t%c%c%c%c%c%c%c  %c%c%c%c%c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c   %c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+
+    printf("\n\t%c%c       %c%c       ", 219, 219);
+    printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
+
+    printf("\n\t%c%c       %c%c       ", 219, 219);
+    printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
+
+    printf("\n\t%c%c       %c%c%c%c%c%c%c  ", 219, 219);
+    printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
+
+    printf("\n\t%c%c       %c%c       ", 219, 219);
+    printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
+
+    printf("\n\t%c%c       %c%c       ", 219, 219);
+    printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
+
+    printf("\n\t%c%c%c%c%c%c%c  %c%c%c%c%c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c   %c%c%c%c%c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+
+    printf("\n");
+
+    printf("\n\t%c%c%c%c%c%c%c%c%c%c   ", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c   %c%c%c%c%c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    
+    printf("\n\t%c%c      %c%c   ", 219, 219, 219, 219);
+    printf("%c%c        %c%c       ", 219, 219, 219, 219);
+   
+    printf("\n\t%c%c      %c%c   ", 219, 219, 219, 219);
+    printf("%c%c        %c%c       ", 219, 219, 219, 219);
+   
+    printf("\n\t%c%c%c%c%c%c%c%c%c%c   ", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c        %c%c%c%c%c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+   
+    printf("\n\t%c%c      %c%c   ", 219, 219, 219, 219);
+    printf("%c%c        %c%c       ", 219, 219, 219, 219);
+   
+    printf("\n\t%c%c      %c%c   ", 219, 219, 219, 219);
+    printf("%c%c        %c%c       ", 219, 219, 219, 219);
+   
+    printf("\n\t%c%c      %c%c   ", 219, 219, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c   %c%c%c%c%c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+
+
+    Sleep(1000);
+    printf("\n\n\tLoading CENACE %c     0%c", 196, 37);
+    int i;
+    for(i = 0; i < 100; i += 12)
+    {
+        Sleep(100);
+        printf("\b\b\b\b\b\b\b\b\\    %2d%c", i, 37);
+        Sleep(100);
+        printf("\b\b\b\b\b\b\b\b/    %2d%c",i + 2, 37);
+        Sleep(100);
+        printf("\b\b\b\b\b\b\b\b%c    %2d%c", 196, i + 3, 37);
+    }
+    Sleep(500);
+    system("cls");
+    Sleep(1000);
+}
