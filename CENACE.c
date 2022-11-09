@@ -32,6 +32,8 @@ int  space_in_board();
 void updateLearning_data();
 void menu();
 void CENACE_intro();
+void updateGraphing_data();
+void updateGraphing_data();
 
 int main()
 {
@@ -41,6 +43,7 @@ int main()
     if(exit_CENACE) return 0;
 
     system("mkdir Learning_data");
+    system("mkdir Graphing_data");
 
     start:
     auto_train_count = 0;
@@ -123,14 +126,18 @@ int main()
                 {
                     printf("\n\n\t>> Player-X win! <<");
                 }
+
                 updateLearning_data();
+                updateGraphing_data();
             }
             else if(win == -1)
             {
                 system("cls");
                 printboard();
                 printf("\n\n\t>> Draw! <<");
+
                 updateLearning_data();
+                updateGraphing_data();
             }
 
             player ++;
@@ -382,8 +389,6 @@ void inputmove()
 
 
         //Creating the .txt files inside "Learning_data\<FOLDER NAME>\...." starts here
-        
-
         for(i = 0; i < space_in_board(); i ++)
         {
             point_list[i] = 0;
@@ -742,4 +747,38 @@ void CENACE_intro()
     Sleep(500);
     system("cls");
     Sleep(1000);
+}
+
+void updateGraphing_data()
+{
+    FILE *file_lastScore, *file_scoreList;
+    char path1[] = "Graphing_data\\Last_Score.txt";
+    char path2[] = "Graphing_data\\Score_List.txt";
+    char score[100];
+    int  intscore;
+
+    file_lastScore = fopen(path1, "r");
+    if(file_lastScore == NULL)
+    {
+        file_lastScore = fopen(path1, "w");
+        fprintf(file_lastScore, 0);
+        fclose(file_lastScore);
+    }
+    fgets(score, 20, file_lastScore);
+    intscore = atoi(score);
+    fclose(file_lastScore);
+
+    if(win == 1 && player == 1) intscore += WIN_REWORD;
+    else if(win == -1) intscore += DRAW_REWORD;
+    else intscore -= PUNISHMENT;
+
+    sprintf(score, "%d", intscore);
+
+    file_lastScore = fopen(path1, "w");
+    fprintf(file_lastScore, score);
+    fclose(file_lastScore);
+
+    file_scoreList = fopen(path2, "a");
+    fprintf(file_scoreList, strcat(score, "\n"));
+    fclose(file_scoreList);
 }
