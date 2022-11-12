@@ -250,12 +250,10 @@ void choose_player()
 
 void inputmove()
 {
-
-
-    //Input from human
+    //Input from human or auto input move while in auto train
     if(player == 2)
     {
-        if(auto_train != 'y')
+        if(auto_train != 'y' && auto_train != 'Y')
         {
             printf("\n\n\tEnter your move (1-9): ");
             move = getch();
@@ -387,7 +385,6 @@ void inputmove()
         system(cmd);
         //Creating folder inside learning data ends here
 
-
         //Creating the .txt files inside "Learning_data\<FOLDER NAME>\...." starts here
         for(i = 0; i < space_in_board(); i ++)
         {
@@ -446,7 +443,6 @@ void inputmove()
         printf("\n\n\tEnter your move (1-9): ");
         srand(time(NULL));
 
-        
         while(1)
         {
             //Note that: 1. 'move' is a char.
@@ -460,11 +456,9 @@ void inputmove()
             }
             else continue;
         }
-        
         printf("%c", move);
 
         //final current-path for given move
-        
         char name_of_txt_file [2] = {move, '\0'};
         strcpy(path, "Learning_data\\");
         strcat(path, current_board);
@@ -474,7 +468,6 @@ void inputmove()
 
         strcpy(O_paths[O_move_count], path);
         O_move_count ++;
-        
     }
 }
 
