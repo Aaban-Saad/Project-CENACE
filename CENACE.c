@@ -40,8 +40,12 @@ int main()
     system("cls");
     CENACE_intro();
     menu();
-    if(exit_CENACE) return 0;
-
+    if(exit_CENACE) 
+    {
+        system("cls");
+        Sleep(250);
+        return 0;
+    }
     system("mkdir Learning_data");
     system("mkdir Graphing_data");
 
@@ -120,11 +124,11 @@ int main()
                 printboard();
                 if(player == 1)
                 {
-                    printf("\n\n\t>> Player-O win! <<");
+                    printf("\n\n\t>> Player-O won! <<");
                 }
                 else
                 {
-                    printf("\n\n\t>> Player-X win! <<");
+                    printf("\n\n\t>> Player-X won! <<");
                 }
 
                 updateLearning_data();
@@ -149,7 +153,7 @@ int main()
         printf("\nFile paths: ");
         for(int i = 0; i < O_move_count; i++)
         {
-            printf("\n%s", O_paths[i]);
+            printf("\n   %s", O_paths[i]);
         }
         
         //Asking user if he/she wants to play again
@@ -171,7 +175,12 @@ int main()
                     system("cls");
                     O_move_count = 0;
                     menu();
-                    if(exit_CENACE) return 0;
+                    if(exit_CENACE) 
+                    {
+                        system("cls");
+                        Sleep(250);
+                        return 0;
+                    }
                     else goto start;
                 }
                 else if(ask == 8)
@@ -203,7 +212,12 @@ int main()
                 auto_train = 'n';
                 system("cls");
                 menu();
-                if(exit_CENACE) return 0;
+                if(exit_CENACE) 
+                {
+                    system("cls");
+                    Sleep(250);
+                    return 0;
+                }
                 else goto start;
             }
         }
@@ -474,27 +488,27 @@ void inputmove()
 void newboard()
 {
     int i;
-    for(i = 0; i <= 9; i ++)
+    gameboard[9] = '\0';
+    for(i = 0; i < 9; i ++)
     {
-        if(i == 9) gameboard[i] = '\0';
-        else        gameboard[i] = ' ';
+        gameboard[i] = ' ';
     }
 }
 
 void printboard()
 {
-    if(player == 1)
-    {
-        printf("\n\tPlayer-O, your turn\n");
-    }
-    else
-    {
-        printf("\n\tPlayer-X, your turn\n");
-    }
-
     printf("\n\t\t 1|2|3");
     printf("\n\t\t 4|5|6");
     printf("\n\t\t 7|8|9\n");
+
+    if(player == 1)
+    {
+        printf("\n\t  Player-O, your turn\n");
+    }
+    else
+    {
+        printf("\n\t  Player-X, your turn\n");
+    }
 
     printf("\n\t       |       |       ");
     printf("\n\t   %c   |   %c   |   %c   ", gameboard[0], gameboard[1], gameboard[2]);
@@ -628,7 +642,9 @@ void menu()
 
         case '4':
         system("cls");
-        printf("\nUnder development");
+        printf("\n\tComputer Educable Noughts and Crosses Engine (CENACE)\n");
+        printf("\n\tAuthor: Aaban Saad Preyanta");
+        printf("\n\tNSU ID: 2233389642");
         getch();
         system("cls");
         goto menu;
