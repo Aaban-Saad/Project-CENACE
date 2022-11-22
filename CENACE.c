@@ -642,9 +642,30 @@ void menu()
 
         case '4':
         system("cls");
-        printf("\n\tComputer Educable Noughts and Crosses Engine (CENACE)\n");
+        printf("\n     _______________________________________________________");
+        printf("\n    |                                                       |");
+        printf("\n    | Computer Educable Noughts and Crosses Engine (CENACE) |");
+        printf("\n    |_______________________________________________________|\n");
+
         printf("\n\tAuthor: Aaban Saad Preyanta");
         printf("\n\tNSU ID: 2233389642");
+        printf("\n\tBachelor of Computer Science and Engineering");
+        printf("\n\tDepartment of Electrical and Computer Engineering");
+        printf("\n\tNorth South University, Dhaka, Bangladesh\n");
+
+        printf("\n\tThe name CENACE originated from the 1961 MENACE reinforcement learning model by Donald Michie. ");
+        printf("\n\tI have programmed CENACE as a computer simulation of Michie's MENACE. ");
+        printf("\n\tInstead of matchboxes, CENACE uses folders and text files to keep track of its moves.\n");
+        printf("\n  ____________________________________________________________________________________________________\n\n");
+
+        printf("\n\tMENACE: The Matchbox Educable Noughts and Crosses Engine was a ");
+        printf("\n\tmechanical computer made from 304 matchboxes designed and built by ");
+        printf("\n\tartificial intelligence researcher Donald Michie in 1961. ");
+        printf("\n\tIt was designed to play human opponents in games of noughts and crosses (tic-tac-toe) ");
+        printf("\n\tby returning a move for any given state of play ");
+        printf("\n\tand to refine its strategy through reinforcement learning. (Wikipedia)");
+        
+        
         getch();
         system("cls");
         goto menu;
