@@ -22,6 +22,7 @@ char gameboard[10]; //this is a string
 char auto_train;
 int  auto_train_count, total_training_match;
 int  exit_CENACE;
+int  match, CENACEscore, humanScore;
 
 void choose_player();
 void inputmove();
@@ -34,6 +35,7 @@ void menu();
 void CENACE_intro();
 void updateGraphing_data();
 void updateGraphing_data();
+void scoreUpdate();
 
 int main()
 {
@@ -52,6 +54,10 @@ int main()
     start:
     auto_train_count = 0;
     O_move_count = 0;
+    match = 1;
+    CENACEscore = 0;
+    humanScore = 0;
+
     while(1)
     {
         player = 1;
@@ -120,6 +126,7 @@ int main()
             win = checkwin();
             if(win == 1)
             {
+                scoreUpdate();
                 system("cls");
                 printboard();
                 if(player == 1)
@@ -136,6 +143,7 @@ int main()
             }
             else if(win == -1)
             {
+                scoreUpdate();
                 system("cls");
                 printboard();
                 printf("\n\n\t>> Draw! <<");
@@ -146,8 +154,7 @@ int main()
 
             player ++;
 
-        }while (win == 0);
-
+        }while(win == 0);
 
         //Printing all paths
         printf("\nFile paths: ");
@@ -202,7 +209,6 @@ int main()
         if(auto_train == 'y' || auto_train == 'Y')
         {
             auto_train_count ++;
-            printf("\n\tmatch = %d", auto_train_count);
             O_move_count = 0;
             if(auto_train_count == total_training_match)
             {
@@ -221,13 +227,14 @@ int main()
                 else goto start;
             }
         }
+        match ++;
     }
 }
 
 void choose_player()
 {
-    player_O = '2';
-    player_X = '1';
+    player_O = '2'; //2 = Computer(CENACE)
+    player_X = '1'; //1 = Human
     
     
     // while(1)
@@ -497,17 +504,34 @@ void newboard()
 
 void printboard()
 {
-    printf("\n\t\t 1|2|3");
-    printf("\n\t\t 4|5|6");
-    printf("\n\t\t 7|8|9\n");
+    //printf("\n\t\t 1|2|3");
+    //printf("\n\t\t 4|5|6");
+    //printf("\n\t\t 7|8|9\n");
+    if(auto_train == 'y' || auto_train == 'Y')
+    {
+        printf("\n\t      Match:%4d", match);
+        printf("\n      ___________________________");
+        printf("\n     |              /            |");
+        printf("\n     | CENACE:%4d vs HUMAN:%4d |", CENACEscore, humanScore);
+        printf("\n     |_____________/_____________|");
+    }
+
+    else
+    {
+        printf("\n\t      Match:%4d", match);
+        printf("\n      ___________________________");
+        printf("\n     |              /            |");
+        printf("\n     | CENACE:%4d vs HUMAN:%4d |", CENACEscore, humanScore);
+        printf("\n     |_____________/_____________|");
+    }
 
     if(player == 1)
     {
-        printf("\n\t  Player-O, your turn\n");
+        printf("\n\n\t  Player-O, your turn\n");
     }
     else
     {
-        printf("\n\t  Player-X, your turn\n");
+        printf("\n\n\t  Player-X, your turn\n");
     }
 
     printf("\n\t       |       |       ");
@@ -521,7 +545,7 @@ void printboard()
     printf("\n\t       |       |       \n");
 }
 
-int checkwin()
+int checkwin() //1 = win, -1 = draw
 {
     if     (gameboard[0] == 'X' && gameboard[1] == 'X' && gameboard[2] == 'X') return 1;
     else if(gameboard[3] == 'X' && gameboard[4] == 'X' && gameboard[5] == 'X') return 1;
@@ -571,7 +595,7 @@ void updateLearning_data()
         intpoint = atoi(point);
         fclose(file);
 
-        if(win == 1 && player == 1) intpoint += WIN_REWORD;
+        if(win == 1 && player == 1) intpoint += WIN_REWORD; //player 1 = CENACE
         else if(win == -1) intpoint += DRAW_REWORD;
         else intpoint -= PUNISHMENT;
 
@@ -812,3 +836,24 @@ void updateGraphing_data()
     fprintf(file_scoreList, strcat(score, "\n"));
     fclose(file_scoreList);
 }
+
+void scoreUpdate()
+{
+    if(win == 1 && player == 1)
+    {
+        CENACEscore += WIN_REWORD;
+        humanScore -= PUNISHMENT;
+    }
+    else if(win == 1 && player == 2)
+    {
+        humanScore += WIN_REWORD;
+        CENACEscore -= PUNISHMENT;
+    }
+
+    if(win == -1)
+    {
+        CENACEscore += DRAW_REWORD;
+        humanScore += DRAW_REWORD;
+    }
+}
+
