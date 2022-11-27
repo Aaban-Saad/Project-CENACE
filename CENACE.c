@@ -39,6 +39,8 @@ void scoreUpdate();
 
 int main()
 {
+    system("title CENACE");
+    system("COLOR 0B");
     system("cls");
     CENACE_intro();
     menu();
@@ -117,9 +119,9 @@ int main()
             }
             else
             {
-                printf("\a\n\tINVALID MOVE!");
+                printf("\n\tINVALID MOVE!");
+                Beep(800, 500);
                 fflush(stdin);
-                getch();
                 player --;
             }
 
@@ -132,10 +134,22 @@ int main()
                 if(player == 1)
                 {
                     printf("\n\n\t>> Player-O won! <<");
+                    if(auto_train != 'y' && auto_train != 'Y')
+                    {
+                        Beep(500,300);
+                        Beep(500,300);
+                        Beep(700,500);
+                    }
                 }
                 else
                 {
                     printf("\n\n\t>> Player-X won! <<");
+                    if(auto_train != 'y' && auto_train != 'Y')
+                    {
+                        Beep(700,300);
+                        Beep(700,300);
+                        Beep(500,500);
+                    }
                 }
 
                 updateLearning_data();
@@ -147,6 +161,11 @@ int main()
                 system("cls");
                 printboard();
                 printf("\n\n\t>> Draw! <<");
+                if(auto_train != 'y' && auto_train != 'Y')
+                {
+                    Beep(400,250);
+                    Beep(500,250);
+                }
 
                 updateLearning_data();
                 updateGraphing_data();
@@ -721,7 +740,7 @@ void CENACE_intro()
     printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("\n\t%c%c%c      %c%c%c   %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c   %c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219);
     Sleep(1500);
     system("cls");
 
@@ -736,7 +755,7 @@ void CENACE_intro()
     printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("\n\t%c%c%c      %c%c%c  %c%c%c  %c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     Sleep(1000);
     system("cls");
