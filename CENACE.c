@@ -385,9 +385,7 @@ void inputmove()
                     else continue;
                 }
             }
-
-        }
-        
+        }        
     }
 
     //Input from computer
