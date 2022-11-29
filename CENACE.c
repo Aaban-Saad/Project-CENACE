@@ -675,7 +675,20 @@ void menu()
 
         case '3':
         system("cls");
-        printf("\nUnder development");
+        printf("\n\tRULES:");
+        printf("\n\t1. CENACE will always go first.");
+        printf("\n\t2. Move positions are from 1 to 9 on the game board.\n");
+        printf("\n\t\t       |       |       ");
+        printf("\n\t\t   1   |   2   |   3   ");
+        printf("\n\t\t_______|_______|_______");
+        printf("\n\t\t       |       |       ");
+        printf("\n\t\t   4   |   5   |   6   ");
+        printf("\n\t\t_______|_______|_______");
+        printf("\n\t\t       |       |       ");
+        printf("\n\t\t   7   |   8   |   9   ");
+        printf("\n\t\t       |       |       \n");
+        printf("\n\t3. +3 for win, +1 for draw, -1 for lose.");
+        
         getch();
         system("cls");
         goto menu;
@@ -866,8 +879,7 @@ void scoreUpdate()
         humanScore += WIN_REWORD;
         CENACEscore -= PUNISHMENT;
     }
-
-    if(win == -1)
+    else if(win == -1)
     {
         CENACEscore += DRAW_REWORD;
         humanScore += DRAW_REWORD;
