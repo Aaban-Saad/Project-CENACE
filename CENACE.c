@@ -34,7 +34,6 @@ void updateLearning_data();
 void menu();
 void CENACE_intro();
 void updateGraphing_data();
-void updateGraphing_data();
 void scoreUpdate();
 
 int main()
@@ -774,19 +773,19 @@ void CENACE_intro()
     printf("\n\t%c%c%c%c%c%c%c  %c%c%c%c%c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c   %c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
-    printf("\n\t%c%c       %c%c       ", 219, 219);
+    printf("\n\t%c%c       %c%c       ", 219, 219, 219, 219);
     printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
 
     printf("\n\t%c%c       %c%c       ", 219, 219);
     printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
 
-    printf("\n\t%c%c       %c%c%c%c%c%c%c  ", 219, 219);
+    printf("\n\t%c%c       %c%c%c%c%c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
 
-    printf("\n\t%c%c       %c%c       ", 219, 219);
+    printf("\n\t%c%c       %c%c       ", 219, 219, 219, 219);
     printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
 
-    printf("\n\t%c%c       %c%c       ", 219, 219);
+    printf("\n\t%c%c       %c%c       ", 219, 219, 219, 219);
     printf("%c%c   %c%c   %c%c", 219, 219, 219, 219, 219, 219);
 
     printf("\n\t%c%c%c%c%c%c%c  %c%c%c%c%c%c%c  ", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
